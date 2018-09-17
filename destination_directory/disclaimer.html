@@ -2,21 +2,25 @@
 
 <html>
 <head>
-<title> Glype&reg; proxy</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
+<title>Free Web Proxy | autoproxy.online</title>
+<meta name="description" content="autoproxy.online is a simple and completely free web proxy service to change your IP address, secure proxy, unblock sites, and gain anonymity on the Web.">
+<meta name="keywords" content="proxy, http, website, unblock, get to this, let me see, facebook, youtube, twitter , proxyweb, autoproxy.online">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 <style type="text/css">
 	/* GLOBAL ELEMENTS */
 	html,body {
-		margin: 0; padding: 0;
-		background: #0b1933;
-		font-size: 100%;
-		font-family: "trebuchet ms", arial, verdana;
-		color: #444;
-		text-align: center;
+    margin: 0;
+    padding: 0;
+    background: #e7e7e7;
+    font-size: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #444;
+    text-align: center;
 	}
 	a {
-		color: #EF7B0A;
+		color: #de3a7e;
 		text-decoration:none; 
 	}
 	a:hover {
@@ -29,19 +33,12 @@
 	p, td, th, ul {
 		font-size: 80%;
 	}
-	
-	/* LAYOUT */
-	#wrapper {
-		width: 700px;
-		margin: 0 auto 0 auto;
-		text-align: left;
-	}
-	
 	#content {
-		background: #fff;
-		border-top: 3px solid #ce6c1c;
-		border-bottom: 3px solid #ce6c1c;
-		padding: 20px;
+    background: #fff;
+    border-top: 3px solid #59ABE3;
+    border-bottom: 3px solid #1E824C;
+    padding: 20px;
+    border-top-right-radius: 72px;
 	}
 	
 	/* ELEMENTS */
@@ -55,21 +52,24 @@
 		color: #6BAD42;
 	}
 	h1 a {
-		color: #FFFFFF;
+	background: linear-gradient(to right, orange , #F4D03F, #1e824c, #59abe3, #947cb0);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 	}
 	h1 a:hover {
-		color: #6BAD42;
+		color: #ef7b0a;
 		text-decoration: none;
 	}
 	h1 a:hover span {
-		color: #FFFFFF;
+		color: #ef7b0a;
 	}
 	h2 {
-		font: bold 100% arial, verdana, sans-serif;
-		color: #3B578B;
+		font: bold 100% 'Open Sans', sans-serif;
+		color: #8b8b37;
 		border-bottom: 1px solid #ccc;
 		padding-bottom: 3px;
 		margin: 25px 0 10px 0;
+		text-align:left;
 	}
 	p+p {
 		padding-top: 1em;
@@ -92,7 +92,7 @@
 	#footer {
 		margin: 10px 0 0 0; 
 		font-size: 80%;
-		color: #ccc;
+		color: #446CB3;
 	}
 	#nav {
 		text-align: right;
@@ -117,12 +117,21 @@
 	}
 	input.textbox {
 		width: 500px;
-		font: 120% arial, verdana, sans-serif;
+		font: 120% 'Open Sans', sans-serif;
 	}
 	input.button {
-		margin-top: 10px;
-		font-family: arial, verdana, sans-serif;
-		font-size: 120%;
+	color: #fff;
+	background-color: black;
+	text-shadow: -1px 1px #417cb8;
+	border: none;
+	font: 130% 'Open Sans', sans-serif;
+	padding: 1.5px 0 2.3px 0;
+	}
+	input.button:focus {
+	cursor:pointer;
+	}
+	input.button:hover {
+	cursor:pointer;
 	}
 	label {
 		font-weight: light;
@@ -189,36 +198,61 @@
 		background-color: #555555;
 	}
 </style>
-	<script type="text/javascript">ginf={url:'http://.',script:'browse.php',target:{h:'',p:'',b:'',u:''},enc:{u:'gm3L5DLeJ07GHascC3VTLae34dmNkL0F8OwFvgNKbbEifoTd4U6AFprbiwWv5K75KCXU2n3VhQWzujUS8c9OZry0zzHqMqLwkd4mjGaa2rcjAPEdfdPJmus38HFO4Wsp',e:'1',x:'',p:''},b:'29'}</script>
-	<script type="text/javascript" src="http://./includes/main.js?1.4.15"></script><script type="text/javascript">
+	<script type="text/javascript">ginf={url:'http://www.autoproxy.website',script:'browse.php',target:{h:'',p:'',b:'',u:''},enc:{u:'bKeeOh10puYg2M52h4BXI5lJkThyCRpBprF3wuSLMGPEiLunDUa9PkIZ3PotuBUHQnBcHhLiNqKTZ56sP4rueYh6BtpUSarylQARXbZAqxjfsfy58Npczv81MmLvk0Tv',e:'1',x:'',p:''},b:'5'}</script>
+	<script type="text/javascript" src="http://www.autoproxy.website/includes/main.js?1.4.15"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
 	window.addDomReadyFunc(function() {
 		document.getElementById('options').style.display = 'none';
 		document.getElementById('input').focus();
 	});
 	disableOverride();
 </script>
+<script>
+$(document).ready(function(){
+if($(window).width() < 600){
+	$(".ad1").hide();
+}
+});
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90563943-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-90563943-1');
+</script>
+
 </head>
 <body>
-<div id="wrapper">
+<div id="container" style="max-width:800px;margin: 0 auto 0 auto;">
 	<div id="header">
-		<h1><a href="index.html"> <span>Glype&reg;</span> proxy </a></h1>
+		<h1><a href="index.php">www.autoproxy.website</a></h1>
 	</div>
 	<div id="content">
-
-			<h2 class="first">Disclaimer</h2>
+	<h2 class="first">Disclaimer</h2>
 	<p>This service is provided as is, without warranty of any kind. Use of this service is entirely at your own risk. We cannot take responsibility for any direct or indirect damages resulting from the use of this service.</p>
 	<p>The service allows indirect browsing of external, third-party websites. We are not responsible for the content on any external websites that may be accessible through our service. A website viewed through our service is in no way owned by or associated with this website.</p>
 	<p>The term "indirect browsing" refers to the server which you connect to. During "direct" browsing, you connect to the server which provides the resource you are requesting. During "indirect" browsing, you connect to our server. Our script downloads the requested resource and forwards it to you.</p>
 	<p>Any resource (such as web pages, images, files) downloaded through our service may be modified. This may include, but is not limited to, editing URLs so that any resources referenced by the target resource are also downloaded indirectly. The accuracy and reliablity of this process is not guaranteed. The resource which you receive may not be an accurate representation of the resource requested.</p>
 	<p>A side-effect of indirect browsing may be anonymity. By connecting to our server instead of the target server, the target server does not see your IP address. However, we do not guarantee our service will be truly anonymous. The downloaded resource may reference other resources which your browser may automatically download. The service attempts to reroute all such requests through our server but may not be entirely successful. A single direct request will compromise your anonymity.</p>
 	<p>This service may download a resource over a secure connection but this may be sent back to you over an unsecure connection. Do not enter confidential information unless you are on a secure connection to our server.</p>
-	 
 		<ul id="nav">
-			<li class="left"><a href="index.html">Home</a></li>
-			<li class="left"><a href="edit-browser.html">Edit Browser</a></li>
-			<li class="left"><a href="cookies.html">Manage Cookies</a></li>
-			<li><a href="disclaimer.html">Disclaimer</a></li>            
+			<li class="left"><a href="index.php">Home</a></li>
+			<li class="left"><a href="edit-browser.php">Edit Browser</a></li>
+			<li class="left"><a href="cookies.php">Manage Cookies</a></li>
+			<li><a href="disclaimer.php">Disclaimer</a></li>            
 		</ul>
+	</div><br>
+	<div id="content">
+		<h2 class="first">About</h2>
+
+		<div align="left"><b>autoproxy.online</b> is the best proxy for unblocking websites like <b>Facebook, Twitter, Youtube, Vimeo, Myspace...</b> and it is free to use .<br> <b>autoproxy.online</b> allows you to access any website anonymously also by using our free web proxy, your IP address is always hidden and will not be exposed at any time. We have taken numerous steps to ensure a secure browsing session for our users. The autoproxy.online IP address is the only IP address that will be visible.<br>
+<strong>Filtering.</strong> This proxy may refuse to answer some requests if it detects that are prohibited. <br>
+<strong>Security.</strong> This proxy server is an additional layer of defense and therefore protects web servers. <br>
+<strong>Speed.</strong> This web proxy will cache multiple same request, so it will save more times to load some resources. 
+Options. Yes this is one of important feature that must have at every proxy site. You can manage url configuration through <font color="#de3a7e">[options]</font> panel, such as Encrypt URL, cookies allowance, remove unneeded object, encrypt page , remove pages titles and script removal if needed. </div>
 	</div>
 	<div id="footer">
 		Powered by <a href="http://www.glype.com/">Glype</a>&reg; v1.4.15.
