@@ -3,7 +3,7 @@
 * and/or its licensors, successors and assigners. All rights reserved.
 *
 * Use of Glype is subject to the terms of the Software License Agreement.
-* http://www.glype.com/license.php
+* http://www.glype.com/license.html
 *******************************************************************
 * This file is the javascript library. The version downloaded by the
 * user is compressed to save on bandwidth. This uncompressed version
@@ -187,7 +187,7 @@ function parseURL(input, flag) {
 	if ( input.length > 8 && input.substr(8).indexOf('//') ) {
 		input = input.replace(/[^:]\/\//g, '/');
 	}
-	 
+
 	// Simplify path by converting /dir/../ to /
 	if ( input.indexOf('/..') > 0 ) {
 		var urlparts = input.substring(ginf.target.h.length).split(/\//);
@@ -241,25 +241,25 @@ function parseURL(input, flag) {
 
 /*****************************************************************
 * Read options and URL from our form, convert to proxied URL and load it.
-* If javascript is disabled, the form POSTs to /includes/process.php
+* If javascript is disabled, the form POSTs to /includes/process.html
 ******************************************************************/
 
 function updateLocation(form) {
-	 
+
 	// Reset bitfield
 	ginf.b = 0;
-	 
+
 	// Array of options
 	var options = new Array();
-	 
+
 	// Loop through form elements
 	for ( i=0; i < form.elements.length; i++ ) {
-	 
+
 		if ( form.elements[i].name == 'u' ) {
 
 			// Record URL
 			url = form.elements[i].value;
-		  
+
 		} else if ( form.elements[i].type == 'checkbox' ) {
 
 			// Add option
@@ -271,7 +271,7 @@ function updateLocation(form) {
 			}
 		}
 	}
-	 
+
 	// Ensure URL entered
 	if ( ! url ) {
 		return false;
@@ -311,23 +311,23 @@ function parseHTML(html) {
 	 if ( (parser = /<base href(?==)=["']?([^"' >]+)['"]?(>|\/>|<\/base>)/i.exec(html)) ) {
 		  ginf.target.b = parser[1]; // Update base variable for future parsing
 		  if ( ginf.target.b.charAt(ginf.target.b.length-1) != '/' ) // Ensure trailing slash
-				ginf.target.b += '/'; 
+				ginf.target.b += '/';
 		  html = html.replace(parser[0],''); // Remove from document since we don't want the unproxied URL
 	 }
-	 
+
 	 // Meta refresh
 	 if ( parser = /content=(["'])?([0-9]+)\s*;\s*url=(['"]?)([^"'>]+)\3\1(.*?)(>|\/>)/i.exec(html) )
 		  html = html.replace(parser[0],parser[0].replace(parser[4],parseURL(parser[4])));
 
 	 // Proxy an update to URL based attributes
 	 html = html.replace(/\.(action|src|location|href)\s*=\s*([^;}]+)/ig,'.$1=parseURL($2)');
-	 
+
 	 // Send innerHTML updates through our parser
 	 html = html.replace(/\.innerHTML\s*(\+)?=\s*([^};]+)\s*/ig,'.innerHTML$1=parseHTML($2)');
-	 
+
 	 // Proxy iframe, ensuring the frame flag is added
 	 parser = /<iframe\s+([^>]*)\s*src\s*=\s*(["']?)([^"']+)\2/ig;
-	 while ( match = parser.exec(html) ) 
+	 while ( match = parser.exec(html) )
 		  html = html.replace(match[0],'<iframe ' +match[1] +' src'+'=' + match[2] + parseURL(match[3],'frame') + match[2] );
 
 	 // Proxy attributes
@@ -398,14 +398,14 @@ function parseJS(js,debug) {
 		// Create the wrapped statement
 		var wrapped = wrapperFunc + '(' + match.substring(start, end) + ')';
 
-		// And make the starting replacement 
+		// And make the starting replacement
 		return substr_replace(match, wrapped, start, end-start);
 	}
 
 	// Replace all. Because we go past the match by quite a way, we may find
 	// other statements nested within the match and these would not be replaced.
 	// To avoid this, we repeatedly call the .replace() method until it leaves us
-	// with an unchanged string - i.e. all possible changes have been made. 
+	// with an unchanged string - i.e. all possible changes have been made.
 	// Undoubtedly, not ideal but it works for now.
 	function replaceAll(input, regex) {
 		for ( var previous = input; input = input.replace(regex, replacer), input != previous; previous = input);
@@ -474,7 +474,7 @@ function analyze_js(input, start, argPos) {
 				// into account and escaping backslashes
 				while ( ( i = strpos(input, currentChar, i+1) ) && input.charAt(i-1) == '\\' );
 
-				// False? Closing string delimiter not found... assume end of document 
+				// False? Closing string delimiter not found... assume end of document
 				// although technically we've screwed up (or the syntax is invalid)
 				if ( i === false ) {
 					end = length;
@@ -539,7 +539,7 @@ function analyze_js(input, start, argPos) {
 				++openArrays;
 				break;
 
-			// Closing chars - is there a corresponding open char? 
+			// Closing chars - is there a corresponding open char?
 			// Yes = reduce stored count. No = end of statement.
 			case '}':
 				openObjects	  ? --openObjects	  : end = i;
@@ -658,9 +658,9 @@ window.open = function() {
 
 	// Do want to interfere?
 	if ( ginf.override ) {
-		args[0] = parseURL(args[0]); 
+		args[0] = parseURL(args[0]);
 	} else if ( args[args.length-1] == 'gl' ) {
-		args[0] = parseURL(args[0]); 
+		args[0] = parseURL(args[0]);
 		args.splice(args.length-1);
 	}
 
@@ -680,9 +680,9 @@ try {
 
 		// Do want to interfere?
 		if ( ginf.override ) {
-			args[1] = parseURL(args[1], 'ajax'); 
+			args[1] = parseURL(args[1], 'ajax');
 		} else if ( args[args.length-1] == 'gl' ) {
-			args[1] = parseURL(args[1], 'ajax'); 
+			args[1] = parseURL(args[1], 'ajax');
 			args.splice(args.length-1);
 		}
 
@@ -699,9 +699,9 @@ try {
 
 			// Do want to interfere?
 			if ( ginf.override ) {
-				args[1] = parseURL(args[1], 'ajax'); 
+				args[1] = parseURL(args[1], 'ajax');
 			} else if ( args[args.length-1] == 'gl' ) {
-				args[1] = parseURL(args[1], 'ajax'); 
+				args[1] = parseURL(args[1], 'ajax');
 				args.splice(args.length-1);
 			}
 
@@ -727,7 +727,7 @@ document.write = function(html) {
 		html = parseHTML(html);
 	}
 
-	document.base_write(html);	 
+	document.base_write(html);
 };
 
 document.writeln = function(html) {
@@ -773,9 +773,9 @@ if ( typeof ginf.override != 'undefined' || typeof ginf.test != 'undefined'  ) {
 	// Setters (innerHTML, href, etc.)
 	try {
 
-		var intercept = [HTMLElement, HTMLHtmlElement, HTMLHeadElement, HTMLLinkElement, HTMLStyleElement, HTMLBodyElement, HTMLFormElement, 
+		var intercept = [HTMLElement, HTMLHtmlElement, HTMLHeadElement, HTMLLinkElement, HTMLStyleElement, HTMLBodyElement, HTMLFormElement,
 							  HTMLSelectElement, HTMLOptionElement, HTMLInputElement, HTMLTextAreaElement, HTMLButtonElement, HTMLLabelElement,
-							  HTMLFieldSetElement, HTMLLegendElement, HTMLUListElement, HTMLOListElement, HTMLDListElement, HTMLDirectoryElement, 
+							  HTMLFieldSetElement, HTMLLegendElement, HTMLUListElement, HTMLOListElement, HTMLDListElement, HTMLDirectoryElement,
 							  HTMLMenuElement, HTMLLIElement, HTMLDivElement, HTMLParagraphElement, HTMLHeadingElement, HTMLQuoteElement, HTMLPreElement,
 							  HTMLBRElement, HTMLBaseFontElement, HTMLFontElement, HTMLHRElement, HTMLAnchorElement, HTMLImageElement,
 							  HTMLObjectElement, HTMLParamElement, HTMLAppletElement, HTMLMapElement, HTMLModElement, HTMLAreaElement, HTMLScriptElement,
@@ -790,7 +790,7 @@ if ( typeof ginf.override != 'undefined' || typeof ginf.test != 'undefined'  ) {
 
 		// New setAttribute
 		mySetAttribute = function(attr, value) {
-			try { 
+			try {
 				type = attr.toLowerCase();
 				if ( type == 'src' || type == 'href' || type == 'background' || type == 'action' ) {
 					value = parseURL(value);
@@ -839,7 +839,7 @@ if ( typeof ginf.override != 'undefined' || typeof ginf.test != 'undefined'  ) {
 		if ( failed.setters ) failures += '&setters=1';
 
 		// Prepare to send to the server
-		req.base_open('GET', ginf.url + '/includes/process.php?action=jstest&' + failures, true);
+		req.base_open('GET', ginf.url + '/includes/process.html?action=jstest&' + failures, true);
 
 		// Go go go!
 		req.send('');
@@ -895,26 +895,26 @@ function enableOverride() {
 var offsetx = 12;
 var offsety =	8;
 
-function newelement(newid) { 
-	 if(document.createElement) { 
-		  var el = document.createElement('div'); 
+function newelement(newid) {
+	 if(document.createElement) {
+		  var el = document.createElement('div');
 		  el.id = newid;
-		  with(el.style) { 
+		  with(el.style) {
 				display = 'none';
 				position = 'absolute';
-		  } 
-		  el.innerHTML = '&nbsp;'; 
-		  document.body.appendChild(el); 
-	 } 
-} 
-var ie5 = (document.getElementById && document.all); 
-var ns6 = (document.getElementById && !document.all); 
+		  }
+		  el.innerHTML = '&nbsp;';
+		  document.body.appendChild(el);
+	 }
+}
+var ie5 = (document.getElementById && document.all);
+var ns6 = (document.getElementById && !document.all);
 var ua = navigator.userAgent.toLowerCase();
 var isapple = (ua.indexOf('applewebkit') != -1 ? 1 : 0);
 function getmouseposition(e) {
 	 if(document.getElementById) {
-		  var iebody=(document.compatMode && 
-			document.compatMode != 'BackCompat') ? 
+		  var iebody=(document.compatMode &&
+			document.compatMode != 'BackCompat') ?
 				document.documentElement : document.body;
 		  pagex = (isapple == 1 ? 0:(ie5)?iebody.scrollLeft:window.pageXOffset);
 		  pagey = (isapple == 1 ? 0:(ie5)?iebody.scrollTop:window.pageYOffset);
@@ -972,7 +972,7 @@ function init() {
 			window.domReadyFuncs[i]();
 		} catch(ignore) {}
 	}
-  
+
 }
 
 /* for Mozilla/Opera9 */
@@ -985,7 +985,7 @@ if (document.addEventListener) {
 /*@if (@_win32)
 	var proto = "src='javascript:void(0)'";
 	if (location.protocol == "https:") proto = "src=//0";
-	document.base_write("<scr"+"ipt id=__ie_onload defer " + proto + "><\/scr"+"ipt>");	  
+	document.base_write("<scr"+"ipt id=__ie_onload defer " + proto + "><\/scr"+"ipt>");
 	var script = document.getElementById("__ie_onload");
 	script.onreadystatechange = function() {
 		if (this.readyState == "complete") {

@@ -17,7 +17,7 @@ body {
    padding: 10px;
    border: 5px solid #ccc;
 }
-form { 
+form {
    margin: 5px;
    background: #eee;
    padding: 5px;
@@ -32,16 +32,16 @@ label {
    <div id="wrapper">
       <h1>Authorization Required</h1>
       <p>The site <strong></strong> is requesting a username and password to access the realm "<strong></strong>".</p>
-      <form action="includes/process.php?action=authenticate" method="post">
+      <form action="includes/process.html?action=authenticate" method="post">
          <label for="user">Username:</label>
          <input type="text" name="user" id="user">
          <label for="pass">Password:</label>
          <input type="password" name="pass" id="pass">
          <input type="submit" value="Submit">
-         
+
          <input type="hidden" name="site" value="">
          <input type="hidden" name="return" value="">
-      </form>      
+      </form>
    </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 * and/or its licensors, successors and assigners. All rights reserved.
 *
 * Use of Glype is subject to the terms of the Software License Agreement.
-* http://www.glype.com/license.php
+* http://www.glype.com/license.html
 *******************************************************************
 * This file is the main component of the glype proxy application.
 * It decodes values contained within the current URI to determine a
@@ -15,10 +15,10 @@
 * Initialise
 ******************************************************************/
 
-require 'includes/init.php';
+require 'includes/init.html';
 
 if (count($adminDetails)===0) {
-	header("HTTP/1.1 302 Found"); header("Location: admin.php"); exit;
+	header("HTTP/1.1 302 Found"); header("Location: admin.html"); exit;
 }
 
 # Debug mode - stores extra information in the cURL wrapper object and prints it
@@ -48,7 +48,7 @@ header('Last-Modified:');
 
 /*****************************************************************
 * Find URI of resource to load
-* Flag and bitfield already extracted in /includes/init.php
+* Flag and bitfield already extracted in /includes/init.html
 ******************************************************************/
 
 switch ( true ) {
@@ -241,7 +241,7 @@ if ( $URL['scheme'] == 'https' && $CONFIG['ssl_warning'] && empty($_SESSION['ssl
 global $foundPlugin;
 $plugins = explode(',', $CONFIG['plugins']);
 if ($foundPlugin = in_array($URL['domain'], $plugins)) {
-	include(GLYPE_ROOT.'/plugins/'.$URL['domain'].'.php');
+	include(GLYPE_ROOT.'/plugins/'.$URL['domain'].'.html');
 }
 
 
@@ -279,7 +279,7 @@ if (
 	# Do we need to find the load and regenerate the temp cache file?
 	# Try to fetch the load from the temp file (~30 times faster than
 	# shell_exec()) and ensure the value is accurate and not outdated,
-	if( ! file_exists($file = $CONFIG['tmp_dir'] . 'load.php') || ! (include $file) || ! isset($load, $lastChecked) || $lastChecked < $_SERVER['REQUEST_TIME']-60 ) {
+	if( ! file_exists($file = $CONFIG['tmp_dir'] . 'load.html') || ! (include $file) || ! isset($load, $lastChecked) || $lastChecked < $_SERVER['REQUEST_TIME']-60 ) {
 
 		$load = (float) 0;
 
@@ -417,7 +417,7 @@ if ( isset($_SERVER['HTTP_ACCEPT_CHARSET']) ) {
 
 /*****************************************************************
 * Browser options
-* Allows customization of a "virtual" browser via /extras/edit-browser.php
+* Allows customization of a "virtual" browser via /extras/edit-browser.html
 ******************************************************************/
 
 # Send user agent
@@ -1515,7 +1515,7 @@ if ( $fetch->parseType ) {
 	}
 
 	# Load the main parser
-	require GLYPE_ROOT . '/includes/parser.php';
+	require GLYPE_ROOT . '/includes/parser.html';
 
 	# Create new instance, passing in the options that affect parsing
 	$parser = new parser($options, $jsFlags);
@@ -1527,8 +1527,8 @@ if ( $fetch->parseType ) {
 		case 'html':
 
 			# Do we want to insert our own code into the document?
-			$inject = 
-			$footer = 
+			$inject =
+			$footer =
 			$insert = false;
 
 			# Mini-form only if NOT frame or sniffed
