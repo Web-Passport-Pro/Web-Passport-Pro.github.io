@@ -1,7 +1,7 @@
 User-agent: *
-Disallow: /admin.php
-Disallow: /browse.php
-Disallow: /browse.php*
+Disallow: /admin.html
+Disallow: /browse.html
+Disallow: /browse.html*
 Disallow: /includes
 Disallow: /plugins
 Disallow: /themes
